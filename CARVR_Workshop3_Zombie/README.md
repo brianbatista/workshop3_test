@@ -1,11 +1,8 @@
+# Carolina AR/VR (Fall 2019)
 
+## Workshop 3 (2019-09-24)
 
-1. Creating the main menu.
-    1. Open the empty "Menu" scene (Project window -> "Scenes" folder -> "Menu")
-    2. In that empty scene, create a Canvas for our UI (Hierarchy -> right click -> UI -> Canvas)
-    3. blah, TODO: finish this
-
-    1. 
+# Zombie Survival
 
 1. Creating the main menu.
     1. Open the empty "Menu" scene (Project window -> "Scenes" folder -> "Menu")
