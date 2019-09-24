@@ -6,19 +6,39 @@ public class ZombieMovement : MonoBehaviour
 {
     // The [SerializeField] annotation can be used to make a "private" field editable in the Unity editor, while still hiding it from other scripts
     [SerializeField] private float rotationSpeed = 90f;
+
     // [Range(min, max)] can be used to specify a valid input range (only validated in the editor, other scripts can set it to anything)
     [SerializeField, Range(0, 100)] private float movementSpeed = 2f;
 
+    private bool justSpawned;
+
     private Player playerRef;
+
     private CharacterController characterController;
+
     void Start()
     {
         playerRef = Player.Instance;
+
         characterController = GetComponent<CharacterController>();
+
+        
     }
 
     void Update()
     {
+
+        StartCoroutine(zombieWalk());
+    }
+
+    IEnumerator zombieWalk()
+    {
+        if (justSpawned)
+        {
+            yield return new WaitForSeconds(2);
+            justSpawned = false;
+        }
+
         // Target could be easily swapped to something else! ;) ;) *nudge nudge* ;) ;)
         Vector3 target = playerRef.transform.position; // Destination position
         Vector3 hereToTarget = target - transform.position; // Vector from zombie to target (player)

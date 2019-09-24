@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class Shooter : MonoBehaviour
 {
+    [SerializeField] private Camera playerCam;
+
     [SerializeField] private Transform bulletOrigin;
+
     [SerializeField] private KeyCode triggerKey = KeyCode.Mouse0;
+
     [SerializeField] private float shootDistance = 30f;
+
     [SerializeField] private List<string> enemyTags = new List<string>(new string[] {"Zombie"});
 
     void Start()
@@ -27,11 +32,21 @@ public class Shooter : MonoBehaviour
 
         if (Input.GetKeyDown(triggerKey)) {
             RaycastHit raycastHit;
-            if (Physics.Raycast(bulletOrigin.position, bulletOrigin.forward, out raycastHit, shootDistance)) {
-                if (enemyTags.Contains(raycastHit.transform.tag)) {
+
+            Ray ray = playerCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+
+            if (Physics.Raycast(ray, out raycastHit, shootDistance))
+            {
+                if (enemyTags.Contains(raycastHit.transform.tag))
+                {
                     Destroy(raycastHit.transform.parent.gameObject);
                 }
             }
+            /*if (Physics.Raycast(bulletOrigin.position, bulletOrigin.forward, out raycastHit, shootDistance)) {
+                if (enemyTags.Contains(raycastHit.transform.tag)) {
+                    Destroy(raycastHit.transform.parent.gameObject);
+                }
+            }*/
         }
     }
 }
