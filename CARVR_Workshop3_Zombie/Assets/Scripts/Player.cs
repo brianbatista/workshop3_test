@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
 
-
+   
     // Note: this assumes we will only ever have one player in our game, and would break if we wanted to add multiplayer :(
     public static Player Instance;
 
@@ -19,14 +20,9 @@ public class Player : MonoBehaviour
         if(other.transform.CompareTag("Zombie"))
         {
             Destroy(other.gameObject);
-        }
-    }
-
-    private void OnCollisionStay(Collision other)
-    {
-        if (other.transform.CompareTag("Zombie"))
-        {
-            Destroy(other.gameObject);
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            SceneManager.LoadScene(0);
         }
     }
 }
