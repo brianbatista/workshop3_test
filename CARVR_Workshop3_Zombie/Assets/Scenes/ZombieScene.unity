@@ -1476,8 +1476,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zombieGO: {fileID: 292664832289193664, guid: 61a7f6d1aa164094c9db1f16754fefc4, type: 3}
   player: {fileID: 374221343}
-  spawnBeforeStart: 5
-  spawnInterval: 2
+  spawnBeforeStart: 0
+  spawnInterval: 1
   spawnRadius: 20
   runSpawn: 1
   maxZombies: 50
@@ -3301,13 +3301,27 @@ GameObject:
   - component: {fileID: 374221348}
   - component: {fileID: 374221350}
   - component: {fileID: 374221351}
+  - component: {fileID: 374221345}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &374221345
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 374221343}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.4702927, y: 2.4512622, z: 1.5043297}
+  m_Center: {x: 0.07096225, y: 1.2524563, z: 0.116603136}
 --- !u!4 &374221347
 Transform:
   m_ObjectHideFlags: 0

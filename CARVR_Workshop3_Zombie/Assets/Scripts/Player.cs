@@ -14,14 +14,19 @@ public class Player : MonoBehaviour
         Instance = this;
     }
 
-    void Start()
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if(other.transform.CompareTag("Zombie"))
+        {
+            Destroy(other.gameObject);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnCollisionStay(Collision other)
     {
-        
+        if (other.transform.CompareTag("Zombie"))
+        {
+            Destroy(other.gameObject);
+        }
     }
 }
