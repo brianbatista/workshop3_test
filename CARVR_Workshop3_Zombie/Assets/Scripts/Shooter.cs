@@ -10,21 +10,14 @@ public class Shooter : MonoBehaviour
 
     [SerializeField] private float shootDistance = 30f;
 
-    [SerializeField] private List<string> enemyTags = new List<string>(new string[] {"Zombie"});
-
-    void Start()
-    {
-        if (rayOrigin == null) {
-            rayOrigin = transform;
-        }
-    }
+    [SerializeField] private string enemyTag = "Zombie";
 
     void Update()
     {
         /*
-        If the trigger key is pressed ( .GetKeyDown(key) ) (Unity Scripting Docs)
-            and if a raycast from bulletOrigin hits something ( Physics.Raycast(...) ) (Unity Scripting Docs)
-                and the thing it hit has a tag contained within the enemyTags list ( .Contains(tag) ) (Google)
+        If the trigger key is pressed ( .GetKeyDown(key) )
+            and if a raycast from bulletOrigin hits something ( Physics.Raycast(...) )
+                and the transform on the thing it hit has a tag passes a comparison against our enemyTag ( .CompareTag(tag) )
                     then destroy the parent of the hit GameObject
         */
 
@@ -33,16 +26,11 @@ public class Shooter : MonoBehaviour
             RaycastHit raycastHit;
             if (Physics.Raycast(rayOrigin.position, rayOrigin.forward, out raycastHit, shootDistance))
             {
-                if (enemyTags.Contains(raycastHit.transform.tag))
+                if (raycastHit.transform.CompareTag(enemyTag))
                 {
                     Destroy(raycastHit.transform.parent.gameObject);
                 }
             }
-            /*if (Physics.Raycast(bulletOrigin.position, bulletOrigin.forward, out raycastHit, shootDistance)) {
-                if (enemyTags.Contains(raycastHit.transform.tag)) {
-                    Destroy(raycastHit.transform.parent.gameObject);
-                }
-            }*/
         }
     }
 }

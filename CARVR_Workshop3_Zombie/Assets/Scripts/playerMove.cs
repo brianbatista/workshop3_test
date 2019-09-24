@@ -5,17 +5,17 @@ using UnityEngine;
 
 public class playerMove : MonoBehaviour
 {
-
     [Header("Transform references")]
-    public Transform rootBody;
-    public Transform pitchBody;
+    public Transform rootBody; // Transform to move and rotate side to side
+    public Transform pitchBody; // Transform to rotate up and down (the head)
 
     [Header("Speeds")]
-    public float playerSpeed = 2;
+    public float playerSpeed = 2f;
     public float mouseSpeed = 2f;
 
-    // Private Variables
+    // Private references
     private CharacterController characterController;
+    // Private state
     private float yaw = 0f;
     private float pitch = 0f;
 
@@ -42,7 +42,7 @@ public class playerMove : MonoBehaviour
 
         // Movement
         Vector3 moveDirection = rootBody.transform.rotation * new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
-        moveDirection *= playerSpeed;
-        characterController.Move(moveDirection * Time.deltaTime);
+        Vector3 moveVector = moveDirection * playerSpeed * Time.deltaTime;
+        characterController.Move(moveVector); //TODO uncomment this
     }
 }
