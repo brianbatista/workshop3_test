@@ -46,8 +46,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc2919b3c60eb4745a14f37285846073, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 90
+  rotationSpeed: 45
   movementSpeed: 2
+  delay: 2
 --- !u!143 &292664832289193677
 CharacterController:
   m_ObjectHideFlags: 0
