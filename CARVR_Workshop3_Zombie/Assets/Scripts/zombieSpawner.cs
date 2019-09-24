@@ -54,8 +54,7 @@ public class zombieSpawner : MonoBehaviour
 	        float zombieZ = Mathf.Cos(angle) * spawnRadius;
 
 	        // Possible locations for the zombie to spawn
-	        Vector3 zombieSpawnPoint = new Vector3(player.transform.position.x + zombieX, 0.0f, player.transform.position.z + zombieZ);
-	        Vector3 zombieSpawnPointZero = Vector3.zero;
+	        Vector3 zombieSpawnPoint = new Vector3(player.transform.position.x + zombieX, 0.3f, player.transform.position.z + zombieZ);
 
 	        // Zombie spawned
 	        Instantiate(zombieGO, zombieSpawnPoint, Quaternion.identity);
