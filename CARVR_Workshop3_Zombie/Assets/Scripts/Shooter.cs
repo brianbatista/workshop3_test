@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class Shooter : MonoBehaviour
 {
-    [SerializeField] private Camera playerCam;
-
-    [SerializeField] private Transform bulletOrigin;
+    [SerializeField] private Transform rayOrigin;
 
     [SerializeField] private KeyCode triggerKey = KeyCode.Mouse0;
 
@@ -16,8 +14,8 @@ public class Shooter : MonoBehaviour
 
     void Start()
     {
-        if (bulletOrigin == null) {
-            bulletOrigin = transform;
+        if (rayOrigin == null) {
+            rayOrigin = transform;
         }
     }
 
@@ -30,12 +28,10 @@ public class Shooter : MonoBehaviour
                     then destroy the parent of the hit GameObject
         */
 
-        if (Input.GetKeyDown(triggerKey)) {
+        if (Input.GetKeyDown(triggerKey))
+        {
             RaycastHit raycastHit;
-
-            Ray ray = playerCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-
-            if (Physics.Raycast(ray, out raycastHit, shootDistance))
+            if (Physics.Raycast(rayOrigin.position, rayOrigin.forward, out raycastHit, shootDistance))
             {
                 if (enemyTags.Contains(raycastHit.transform.tag))
                 {
